@@ -22,9 +22,97 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class ToolboxPanel extends JPanel implements Observer{
+	
+	private class ToolboxControler {
+		public ToolboxControler() throws java.lang.NullPointerException{
+			
+			try {
+			carre.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.RECT);
+					
+				}
+			});
+			
+			triangle.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.TRI);
+					
+				}
+			});
+			cercle.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.OVAL);
+					
+				}
+			});
+			
+			polygone.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.POLY);
+					
+				}
+			});
+			
+			droite.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.LINE);
+					
+				}
+			});
+			
+			curseur.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.CURSOR);
+					
+				}
+			});
+			
+			loupe.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.ZOOM);
+					
+				}
+			});
+			hand.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.HAND);
+					
+				}
+			});
+			supprimer.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					model.getDessinModel().setExpectedOperation(ExpectedOperation.GOMME);
+					
+				}
+			});
+			
+			}catch(java.lang.NullPointerException e) {
+				throw e;
+			}
+		}
+	}
+	
 	private JButton carre,cercle,triangle,polygone,droite,curseur,supprimer,loupe,hand;
 	private JColorChooser listecouleur;
-
 	private  ToolboxModel model;
 	
 	public ToolboxPanel() {
@@ -57,84 +145,9 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.customAdd(supprimer);
 		this.customAdd(listecouleur);
 		
+		new ToolboxControler();
 		
-		carre.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.RECT);
-				
-			}
-		});
 		
-		triangle.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.TRI);
-				
-			}
-		});
-		cercle.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.OVAL);
-				
-			}
-		});
-		
-		polygone.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.POLY);
-				
-			}
-		});
-		
-		droite.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.LINE);
-				
-			}
-		});
-		
-		curseur.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.CURSOR);
-				
-			}
-		});
-		
-		loupe.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.ZOOM);
-				
-			}
-		});
-		hand.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.HAND);
-				
-			}
-		});
-		supprimer.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				model.getDessinModel().setExpectedOperation(ExpectedOperation.GOMME);
-				
-			}
-		});
 
 	}
 
