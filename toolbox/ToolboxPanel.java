@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComponent;
@@ -124,15 +125,48 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.model = m;
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		listecouleur = new JColorChooser(Color.BLACK);
-		carre = new JButton("Carre");
-		cercle = new JButton("Cercle");
-		triangle = new JButton("Triangle");
-		polygone = new JButton("Polygone");
-		droite = new JButton("Droite");
-		curseur = new JButton("Curseur");
-		loupe = new JButton("Zoom");
-		supprimer = new JButton("Supprimer");
-		hand = new JButton("Deplacer");
+		
+		carre = new JButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));
+		cercle = new JButton(new ImageIcon(this.getClass().getResource("/img/oval.png")));
+		triangle = new JButton(new ImageIcon(this.getClass().getResource("/img/triangle.png")));
+		polygone = new JButton(new ImageIcon(this.getClass().getResource("/img/polygone.png")));
+		droite = new JButton(new ImageIcon(this.getClass().getResource("/img/ligne.png")));
+		curseur = new JButton(new ImageIcon(this.getClass().getResource("/img/cursor.png")));
+		loupe = new JButton(new ImageIcon(this.getClass().getResource("/img/loupe.png")));
+		supprimer = new JButton(new ImageIcon(this.getClass().getResource("/img/supprimer.png")));
+		hand = new JButton(new ImageIcon(this.getClass().getResource("/img/hand.png")));
+		
+		carre.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/carreOver.png")));
+		cercle.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/ovalOver.png")));
+		triangle.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/triangleOver.png")));
+		polygone.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/polygoneOver.png")));
+		droite.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/ligneOver.png")));
+		curseur.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/cursorOver.png")));
+		loupe.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/loupeOver.png")));
+		supprimer.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/supprimerOver.png")));
+		hand.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/handOver.png")));
+		
+		carre.setContentAreaFilled(false);
+		cercle.setContentAreaFilled(false);
+		triangle.setContentAreaFilled(false);
+		polygone.setContentAreaFilled(false);
+		curseur.setContentAreaFilled(false);
+		loupe.setContentAreaFilled(false);
+		supprimer.setContentAreaFilled(false);
+		hand.setContentAreaFilled(false);
+		droite.setContentAreaFilled(false);
+		
+		carre.setBorder(null);
+		cercle.setBorder(null);
+		triangle.setBorder(null);
+		polygone.setBorder(null);
+		curseur.setBorder(null);
+		loupe.setBorder(null);
+		supprimer.setBorder(null);
+		hand.setBorder(null);
+		droite.setBorder(null);
+		
+		
 		listecouleur = new JColorChooser(Color.BLACK);
 		this.customAdd(carre);
 		this.customAdd(triangle);
@@ -143,7 +177,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.customAdd(loupe);
 		this.customAdd(hand);
 		this.customAdd(supprimer);
-		this.customAdd(listecouleur);
+		//this.customAdd(listecouleur);
 		
 		new ToolboxControler();
 		
@@ -157,6 +191,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 		f.add(t);
 		f.setVisible(true);
 		f.setSize(new Dimension(300,300));
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 	
