@@ -34,7 +34,79 @@ public class MenuControleur {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.ouvrir();
+				model.notImplemented(e);
+			}
+		});
+		
+		//Bouton enregistrer
+		menu.getEnregistrer().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.notImplemented(e);
+			}
+		});
+		
+		//Bouton enregistrerSous
+		menu.getEnregistrerSous().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.notImplemented(e);
+			}
+		});
+		
+		//Bouton quitter
+		menu.getQuitter().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.quitter();
+			}
+		});
+		
+		//Bouton annuler
+		menu.getAnnuler().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.notImplemented(e);
+			}
+		});
+		
+		//Bouton rétablir
+		menu.getRetablir().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.notImplemented(e);
+			}
+		});
+		
+		//Bouton copier
+		menu.getCopier().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.notImplemented(e);
+			}
+		});
+		
+		//Bouton couper
+		menu.getCouper().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.notImplemented(e);
+			}
+		});
+		
+		//Bouton coller
+		menu.getColler().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.notImplemented(e);
 			}
 		});
 	}

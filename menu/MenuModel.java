@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -76,14 +77,24 @@ public class MenuModel {
 		});
 	}
 	
-	//Boutons ouvrir
-	public void ouvrir() {
-		
+	//Boutons quitter
+	public void quitter() {                
+        int choix = JOptionPane.showConfirmDialog(null, "Voulez vous enregistrer le fichier avant de quitter ?", "Quitter", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if(choix == JOptionPane.YES_OPTION){
+        	System.exit(0);
+        } else if(choix == JOptionPane.NO_OPTION){
+        	System.exit(0);
+        } else if(choix == JOptionPane.CANCEL_OPTION){
+        	
+        } else {
+        	System.exit(0);
+		}
 	}
 
 	//Boutons non implémentés
-	public void notImplemented() {
-		System.out.println("Non implémentée");
+	public void notImplemented(ActionEvent e) {
+		System.out.println(e + "Non implémentée");
 	}
 	
 }
