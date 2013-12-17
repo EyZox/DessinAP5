@@ -40,8 +40,11 @@ public class MenuVue extends JMenuBar {
 	// ======================================================================//
 	// ========================== Constructeur =============================//
 	// ======================================================================//
-
+	
 	public MenuVue() {
+		// Creation du controleur et du model par defaut
+		controleur = new MenuControleur(this);
+		
 		
 		//Mise en place et configuration des JMenuItem dans les JMenu
 		this.fichier.add(nouveau);

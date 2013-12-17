@@ -36,8 +36,7 @@ public class MainFrame extends JFrame {
 		getContentPane().add(dessinFrame, BorderLayout.CENTER);
 		getContentPane().add(new ToolboxPanel(new DefaultToolboxModel(m)), BorderLayout.WEST);
 		
-		MenuControleur menuControleur = new MenuControleur(new MenuVue());
-        setJMenuBar(menuControleur.menu);
+        setJMenuBar(new MenuVue());
 		
 		pack();
 		setLocationRelativeTo(null);
