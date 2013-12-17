@@ -2,12 +2,12 @@ package toolbox;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
@@ -123,7 +123,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 	public ToolboxPanel(ToolboxModel m) {
 		super();
 		this.model = m;
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.setLayout(new FlowLayout());
 		listecouleur = new JColorChooser(Color.BLACK);
 		
 		carre = new JButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));

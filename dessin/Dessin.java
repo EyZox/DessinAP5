@@ -75,6 +75,7 @@ public class Dessin extends JPanel implements Observer{
 		this.model = m;
 		this.model.addObserver(this);
 		this.setBackground(Color.WHITE);
+		this.setPreferredSize(new java.awt.Dimension(640,480));
 		
 		this.addMouseListener(new CustomMouseAdapter());
 	}

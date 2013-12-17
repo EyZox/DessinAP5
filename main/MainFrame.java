@@ -15,7 +15,6 @@ import dessin.DefaultDessinModel;
 import dessin.Dessin;
 import dessin.DessinModel;
 
-import menu.MenuControleur;
 import menu.MenuVue;
 
 @SuppressWarnings("serial")
@@ -34,7 +33,7 @@ public class MainFrame extends JFrame {
 		
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(dessinFrame, BorderLayout.CENTER);
-		getContentPane().add(new ToolboxPanel(new DefaultToolboxModel(m)), BorderLayout.WEST);
+		getContentPane().add(new ToolboxPanel(new DefaultToolboxModel(m)), BorderLayout.SOUTH);
 		
         setJMenuBar(new MenuVue());
 		
