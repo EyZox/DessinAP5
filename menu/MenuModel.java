@@ -93,5 +93,9 @@ public class MenuModel {
 	public void notImplemented(ActionEvent e) {
 		System.out.println(e + "Non implémentée");
 	}
+
+	public void ouvrir() {
+		new OpenFileMenu();
+	}
 	
 }
