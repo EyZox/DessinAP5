@@ -26,7 +26,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 	
 	private class ToolboxControler {
 		public ToolboxControler() throws java.lang.NullPointerException{
-			
+			model.getDessinModel().setExpectedOperation(ExpectedOperation.NONE);
 			try {
 			carre.addActionListener(new ActionListener() {
 				

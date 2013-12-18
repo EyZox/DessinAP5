@@ -50,6 +50,8 @@ public class Dessin extends JPanel implements Observer{
 				break;
 			default:
 				break;
+			case NONE:
+				break;
 			
 			}
 			if(model.getExpectedOperation() != ExpectedOperation.POLY) {

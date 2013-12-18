@@ -49,7 +49,7 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	 */
 	@Override
 	public void addOval(Point p1, Point p2) {
-		Shape s = new Ellipse2D.Double(p1.x, p2.y, p2.x-p1.x, p2.y-p1.y);
+		Shape s = new Ellipse2D.Double(p1.x, p2.y,p2.x - p1.x,p2.y-p1.y);
 		shapes.add(s);
 	}
 	
