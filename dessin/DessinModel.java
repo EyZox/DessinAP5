@@ -7,13 +7,9 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Observer;
 
-import toolbox.ExpectedOperation;
+import toolbox.ToolboxModel;
 
 public interface DessinModel {
-	
-	//Fonction pour reconaitre les formes demandées lors du click
-	public ExpectedOperation getExpectedOperation();
-	public void setExpectedOperation(ExpectedOperation shape);
 	
 	// Fonction de dessin
 	public void addLine(Point p1, Point p2);
@@ -33,7 +29,9 @@ public interface DessinModel {
 	public void open(File file);
 	
 	//Getter & Setter
-	public Collection<Shape> getShapes();
+	public Collection<Shape> getShapes(); //TODO Remplacer par ShapeComponent SEULEMENT quand l'objet sera pret
+	public ToolboxModel getToolBoxModel();
+	public void setToolboxModel(ToolboxModel m);
 	
 	//Obliger a ce que la classe soit un Observable
 	public void addObserver(Observer obs);

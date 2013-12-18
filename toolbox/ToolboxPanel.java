@@ -26,13 +26,13 @@ public class ToolboxPanel extends JPanel implements Observer{
 	
 	private class ToolboxControler {
 		public ToolboxControler() throws java.lang.NullPointerException{
-			model.getDessinModel().setExpectedOperation(ExpectedOperation.NONE);
+			
 			try {
 			carre.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.RECT);
+					model.setExpectedOperation(ExpectedOperation.RECT);
 					
 				}
 			});
@@ -41,7 +41,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.TRI);
+					model.setExpectedOperation(ExpectedOperation.TRI);
 					
 				}
 			});
@@ -49,7 +49,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.OVAL);
+					model.setExpectedOperation(ExpectedOperation.OVAL);
 					
 				}
 			});
@@ -58,7 +58,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.POLY);
+					model.setExpectedOperation(ExpectedOperation.POLY);
 					
 				}
 			});
@@ -67,7 +67,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.LINE);
+					model.setExpectedOperation(ExpectedOperation.LINE);
 					
 				}
 			});
@@ -76,7 +76,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.CURSOR);
+					model.setExpectedOperation(ExpectedOperation.CURSOR);
 					
 				}
 			});
@@ -85,7 +85,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.ZOOM);
+					model.setExpectedOperation(ExpectedOperation.ZOOM);
 					
 				}
 			});
@@ -93,7 +93,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.HAND);
+					model.setExpectedOperation(ExpectedOperation.HAND);
 					
 				}
 			});
@@ -101,7 +101,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					model.getDessinModel().setExpectedOperation(ExpectedOperation.GOMME);
+					model.setExpectedOperation(ExpectedOperation.GOMME);
 					
 				}
 			});

@@ -3,69 +3,16 @@ package dessin;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Shape;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Queue;
 
 import javax.swing.JPanel;
-
-import toolbox.ExpectedOperation;
 
 
 
 @SuppressWarnings("serial")
 public class Dessin extends JPanel implements Observer{
-	private class CustomMouseAdapter extends MouseAdapter {
-		private Queue<Point> points = new LinkedList<Point>();
-		@Override
-		public void mouseReleased(MouseEvent event) {
-			points.add(event.getPoint());
-			switch(model.getExpectedOperation()) {
-			case CURSOR:
-				break;
-			case GOMME:
-				break;
-			case HAND:
-				break;
-			case LINE:
-				model.addLine(points.remove(), points.remove());
-				break;
-			case OVAL:
-				model.addOval(points.remove(), points.remove());
-				break;
-			case POLY:
-				break;
-			case RECT:
-				model.addRect(points.remove(), points.remove());
-				break;
-			case TRI:
-				model.addTri(points.remove(), points.remove());
-				break;
-			case ZOOM:
-				break;
-			default:
-				break;
-			case NONE:
-				break;
-			
-			}
-			if(model.getExpectedOperation() != ExpectedOperation.POLY) {
-				points.clear();
-			}
-			
-		}
-		
-		@Override
-		public void mousePressed(MouseEvent event) {
-			points.add(event.getPoint());
-			
-		}
-	}
 	
 	private DessinModel model;
 	
@@ -79,7 +26,7 @@ public class Dessin extends JPanel implements Observer{
 		this.setBackground(Color.WHITE);
 		this.setPreferredSize(new java.awt.Dimension(640,480));
 		
-		this.addMouseListener(new CustomMouseAdapter());
+		new DessinControler();
 	}
 	
 	
@@ -106,5 +53,8 @@ public class Dessin extends JPanel implements Observer{
 			g2d.draw(shape);
 		}
 	}
+	
+	public DessinModel getModel() { return model;}
+	public void setDessinModel(DessinModel model) { this.model = model;}
 
 }

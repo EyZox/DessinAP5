@@ -4,19 +4,16 @@ import java.awt.Color;
 import java.io.File;
 import java.util.Observable;
 
-import toolbox.ExpectedOperation;
+import toolbox.ToolboxModel;
 
 public abstract class AbstractDessinModel extends Observable implements DessinModel {
 	
 	protected File file;
-	protected ExpectedOperation action;
+	protected ToolboxModel toolboxModel;
 	protected Color c;
 	
 	public Color getColor() { return c;}
 	public void setColor(Color g) { this.c = g;}
-	
-	public ExpectedOperation getExpectedOperation() { return action;}
-	public void setExpectedOperation(ExpectedOperation action) { this.action = action; }
 	
 	public AbstractDessinModel() {
 		this.file = new File("Sans titre");
@@ -35,6 +32,16 @@ public abstract class AbstractDessinModel extends Observable implements DessinMo
 	@Override
 	public void open(File file) {
 		// TODO Ouvrir le fichier
+	}
+	
+	@Override
+	public ToolboxModel getToolBoxModel() {
+		return this.toolboxModel;
+	}
+	
+	@Override
+	public void setToolboxModel(ToolboxModel m) {
+		this.toolboxModel = m;
 	}
 
 }

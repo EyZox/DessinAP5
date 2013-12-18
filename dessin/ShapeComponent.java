@@ -17,6 +17,7 @@ public class ShapeComponent extends JPanel implements Shape {
 private Shape s;
 	public ShapeComponent(Shape s) {
 		this.s = s;
+		this.setPreferredSize(new java.awt.Dimension(s.getBounds().width, s.getBounds().height));
 	}
 	public boolean contains(double arg0, double arg1, double arg2, double arg3) {
 		return s.contains(arg0, arg1, arg2, arg3);
