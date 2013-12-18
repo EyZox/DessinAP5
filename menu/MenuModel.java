@@ -56,6 +56,7 @@ public class MenuModel {
 
 		fenetre.pack();
 		fenetre.setLocationRelativeTo(null);
+		fenetre.setResizable(false);
 		fenetre.setVisible(true);
 		
 		boutonAnnuler.addActionListener(new ActionListener() {
