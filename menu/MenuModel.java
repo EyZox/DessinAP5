@@ -20,10 +20,6 @@ import javax.swing.JTextField;
  */
 public class MenuModel {
 	
-	public MenuModel() {
-		
-	}
-	
 	//Bouton nouveau
 	public void nouveau(){
 		final JFrame fenetre = new JFrame("Nouveau");
@@ -58,9 +54,10 @@ public class MenuModel {
 
 		panneau.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25));
 
-		fenetre.setVisible(true);
 		fenetre.pack();
-
+		fenetre.setLocationRelativeTo(null);
+		fenetre.setVisible(true);
+		
 		boutonAnnuler.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
