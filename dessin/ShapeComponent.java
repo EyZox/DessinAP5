@@ -1,5 +1,7 @@
 package dessin;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
@@ -52,7 +54,11 @@ private Shape s;
 	public void setS(Shape s) {
 		this.s = s;
 	}
-	
+	@Override
+	protected void paintComponent(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.draw(s);
+	}
 	
 
 }
