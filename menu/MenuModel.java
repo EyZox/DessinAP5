@@ -82,14 +82,11 @@ public class MenuModel {
         int choix = JOptionPane.showConfirmDialog(null, "Voulez vous enregistrer le fichier avant de quitter ?", "Quitter", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 
         if(choix == JOptionPane.YES_OPTION){
+        	//TODO Sauvegarder le ficher
         	System.exit(0);
         } else if(choix == JOptionPane.NO_OPTION){
         	System.exit(0);
-        } else if(choix == JOptionPane.CANCEL_OPTION){
-        	
-        } else {
-        	System.exit(0);
-		}
+        }
 	}
 
 	//Boutons non implémentés
