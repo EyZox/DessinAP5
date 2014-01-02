@@ -8,18 +8,27 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPanel;
-
+/**
+ * 
+ * @author duponcha,debuer,vasseurn
+ *
+ */
 
 
 @SuppressWarnings("serial")
 public class Dessin extends JPanel implements Observer{
 	
 	private DessinModel model;
-	
+	/**
+	 * Constructeur par defaut du Dessin, instancie un DefaultDessinModel
+	 */
 	public Dessin() {
 		this(new DefaultDessinModel());
 	}
-	
+	/**
+	 * Constructeur du Dessin avec un Dessin Model en parametre.
+	 * @param m
+	 */
 	public Dessin(DessinModel m) {
 		this.model = m;
 		this.model.addObserver(this);
@@ -36,7 +45,10 @@ public class Dessin extends JPanel implements Observer{
 		repaint();
 		
 	}
-	
+	/**
+	 * Methode permettant de dessiner les differentes formes.
+	 * @param g
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
@@ -53,8 +65,15 @@ public class Dessin extends JPanel implements Observer{
 			g2d.draw(shape);
 		}
 	}
-	
+	/**
+	 * Retourne le Model du Dessin.
+	 * @return model
+	 */
 	public DessinModel getModel() { return model;}
+	/**
+	 * Definit un model pour le Dessin.
+	 * @param model
+	 */
 	public void setDessinModel(DessinModel model) { this.model = model;}
 
 }

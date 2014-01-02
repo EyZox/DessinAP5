@@ -194,7 +194,11 @@ public class ToolboxPanel extends JPanel implements Observer{
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
-	
+	/**
+	 * 
+	 * @param c
+	 * ajoute le component a la ToolboxPanel
+	 */
 	private void customAdd(JComponent c) {
 		c.setAlignmentX(CENTER_ALIGNMENT);
 		add(c);

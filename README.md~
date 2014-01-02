@@ -15,12 +15,8 @@ Principes :
 
 
 Utilisations :
-
-Fichier 
-----------
 Nouveau = Créer un nouveau Fichier (CTRL + N)
 Ouvrir  = Ouvre un projet déjà existant (CTRL + O)
 Enregistrer Sous = Enregistre le projet ( CTRL + S )
 Annuler = Annule la dernière action ( CTRL + Z )
-----------
 

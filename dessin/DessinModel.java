@@ -12,6 +12,7 @@ import toolbox.ToolboxModel;
 public interface DessinModel {
 	
 	// Fonction de dessin
+	
 	public void addLine(Point p1, Point p2);
 	public void addRect(Point p1, Point p2);
 	public void addOval(Point p1, Point p2);

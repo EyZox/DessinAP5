@@ -9,7 +9,9 @@ import java.awt.geom.Line2D;
 import java.util.Collection;
 
 public class DefaultDessinModel extends AbstractDessinModel implements DessinModel{
-	
+	/**
+	 * @author duponcha,debuer,vasseurn
+	 */
 	private ListenedList<Shape> shapes = new ListenedList<Shape>(new Runnable() {
 		@Override
 		public void run() {
@@ -21,6 +23,7 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	
 	/**
 	 * Trace une ligne de p1 a p2
+	 * @param p1 p2 
 	 */
 	@Override
 	public void addLine(Point p1, Point p2) {
@@ -31,12 +34,9 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	}
 	
 	/**
-	 * Trace un rectangle entre p1, repr�sentant le coin sup�rieur gauche, et p2 repr�sentant le coin inf�rieur droit
+	 * Trace un rectangle entre p1, representant le coin superieur gauche, et p2 representant le coin inferieur droit
+	 * @param p1 p2 
 	 * 
-	 *P1----|
-	 *|		|
-	 *|-----P2
-	 *
 	 */
 	@Override
 	public void addRect(Point p1, Point p2) {
@@ -46,6 +46,8 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	
 	/**
 	 * Trace un cercle du point p1 au point p2
+	 * @param p1 p2 
+
 	 */
 	@Override
 	public void addOval(Point p1, Point p2) {
@@ -54,7 +56,8 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	}
 	
 	/**
-	 * Trace un triangle du point p1 au point p2
+	 *  Trace un triangle du point p1 au point p2
+	 * @param p1 p2 
 	 */
 	@Override
 	public void addTri(Point p1, Point p2) {
@@ -64,6 +67,7 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	
 	/**
 	 * Trace un polygone selon un ensemble de point
+	 * @param points
 	 */
 	@Override
 	public void addPoly(Collection<Point> points) {
@@ -73,6 +77,7 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	
 	/**
 	 * Supprime un figure du dessin
+	 * @param shape
 	 */
 	@Override
 	public void remove(Shape shape) {
@@ -91,6 +96,7 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	
 	/**
 	 * Deplace une figure
+	 * param shape p
 	 */
 	@Override
 	public void move(Shape shape, Point p) {
@@ -101,6 +107,7 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	
 	/**
 	 * Redimensionne une figure
+	 * @param shape  p
 	 */
 	@Override
 	public void resize(Shape shape, Point p) {
@@ -112,6 +119,7 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	
 	/**
 	 * Retourne la liste des figures
+	 * @return liste de shapes
 	 */
 	@Override
 	public Collection<Shape> getShapes() {
