@@ -1,5 +1,6 @@
 package dessin;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -46,7 +47,11 @@ public class ShapeComponent extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
+		g2d.setStroke(new BasicStroke(strokeSize));
+		g2d.setColor(borderColor);
 		g2d.draw(s);
+		g2d.setColor(fillColor);
+		g2d.fill(s);
 	}
 
 
