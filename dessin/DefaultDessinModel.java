@@ -3,6 +3,7 @@ package dessin;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
@@ -86,7 +87,13 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	 */
 	@Override
 	public void addTri(Point p1, Point p2) {
-		// TODO Triangle (utilise Polygone)
+		int[]x = new int[3];
+		int[]y = new int[3];
+			
+		x[0]=p1.x; x[1]=p1.x; x[2]=p2.x;
+		y[0]=p1.y; y[1]=p2.y; y[2]=p2.y;
+		Shape s = new Polygon(x, y, 3);
+		shapes.add(s);
 		
 	}
 	

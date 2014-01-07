@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 public class OpenFileMenu extends JFrame {
 
 	public OpenFileMenu() {
-		super("Ouvrir..");
+		super("Ouvrir...");
 		setPreferredSize(new java.awt.Dimension(400,400));
 		final JFileChooser arbre = new JFileChooser();
 		getContentPane().add(arbre);
