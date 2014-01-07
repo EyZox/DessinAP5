@@ -1,7 +1,5 @@
 package toolbox;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,10 +8,11 @@ import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import dessin.ColorButton;
+import dessin.ColorSelection;
 
 /**
  * 
@@ -23,7 +22,6 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class ToolboxPanel extends JPanel implements Observer{
-	
 	private class ToolboxControler {
 		public ToolboxControler() throws java.lang.NullPointerException{
 			
@@ -109,11 +107,13 @@ public class ToolboxPanel extends JPanel implements Observer{
 			}catch(java.lang.NullPointerException e) {
 				throw e;
 			}
+			
 		}
+
 	}
 	
 	private JButton carre,cercle,triangle,polygone,droite,curseur,supprimer,loupe,hand;
-	private JColorChooser listecouleur;
+	private JButton color = new ColorButton();
 	private  ToolboxModel model;
 	
 
@@ -122,7 +122,6 @@ public class ToolboxPanel extends JPanel implements Observer{
 		super();
 		this.model = m;
 		this.setLayout(new FlowLayout());
-		listecouleur = new JColorChooser(Color.BLACK);
 		
 		carre = new JButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));
 		cercle = new JButton(new ImageIcon(this.getClass().getResource("/img/oval.png")));
@@ -133,6 +132,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 		loupe = new JButton(new ImageIcon(this.getClass().getResource("/img/loupe.png")));
 		supprimer = new JButton(new ImageIcon(this.getClass().getResource("/img/supprimer.png")));
 		hand = new JButton(new ImageIcon(this.getClass().getResource("/img/hand.png")));
+		color = new ColorButton();
 		
 		carre.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/carreOver.png")));
 		cercle.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/ovalOver.png")));
@@ -165,7 +165,6 @@ public class ToolboxPanel extends JPanel implements Observer{
 		droite.setBorder(null);
 		
 		
-		listecouleur = new JColorChooser(Color.BLACK);
 		this.customAdd(carre);
 		this.customAdd(triangle);
 		this.customAdd(cercle);
@@ -175,7 +174,8 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.customAdd(loupe);
 		this.customAdd(hand);
 		this.customAdd(supprimer);
-		//this.customAdd(listecouleur);
+		color.setPreferredSize(carre.getPreferredSize());
+		this.customAdd(color);
 		
 		new ToolboxControler();
 		
