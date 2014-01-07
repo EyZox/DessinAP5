@@ -75,6 +75,10 @@ public class MenuModel {
 		});
 	}
 	
+	public void ouvrir() {
+		new OpenFileMenu();
+	}
+	
 	//Boutons quitter
 	public void quitter() {                
         int choix = JOptionPane.showConfirmDialog(null, "Voulez vous enregistrer le fichier avant de quitter ?", "Quitter", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -90,10 +94,6 @@ public class MenuModel {
 	//Boutons non implémentés
 	public void notImplemented(ActionEvent e) {
 		System.out.println(e + "Non implémentée");
-	}
-
-	public void ouvrir() {
-		new OpenFileMenu();
 	}
 	
 }
