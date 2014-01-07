@@ -10,9 +10,7 @@ public class DefaultToolboxModel extends Observable implements ToolboxModel {
 	private DessinModel model;
 	private ExpectedOperation action = ExpectedOperation.CURSOR;
 	
-	public DefaultToolboxModel() {
-		this(new DefaultDessinModel());
-	}
+
 	
 	public DefaultToolboxModel(DessinModel m) {
 		this.model = m;

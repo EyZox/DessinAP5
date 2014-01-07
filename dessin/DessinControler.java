@@ -13,6 +13,10 @@ public class DessinControler extends MouseAdapter {
 	private Queue<Point> points = new LinkedList<Point>();
 	private Dessin dessin;
 	
+	public DessinControler(Dessin d) {
+		this.dessin =d;
+		dessin.addMouseListener(this);
+	}
 	
 	@Override
 	public void mouseReleased(MouseEvent event) {

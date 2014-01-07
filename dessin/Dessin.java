@@ -19,12 +19,7 @@ import javax.swing.JPanel;
 public class Dessin extends JPanel implements Observer{
 	
 	private DessinModel model;
-	/**
-	 * Constructeur par defaut du Dessin, instancie un DefaultDessinModel
-	 */
-	public Dessin() {
-		this(new DefaultDessinModel());
-	}
+
 	/**
 	 * Constructeur du Dessin avec un Dessin Model en parametre.
 	 * @param m
@@ -35,7 +30,7 @@ public class Dessin extends JPanel implements Observer{
 		this.setBackground(Color.WHITE);
 		this.setPreferredSize(new java.awt.Dimension(640,480));
 		
-		new DessinControler();
+		new DessinControler(this);
 	}
 	
 	
