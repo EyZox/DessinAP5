@@ -116,9 +116,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 	private JColorChooser listecouleur;
 	private  ToolboxModel model;
 	
-	public ToolboxPanel() {
-		this(new DefaultToolboxModel());
-	}
+
 
 	public ToolboxPanel(ToolboxModel m) {
 		super();
@@ -185,15 +183,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 
 	}
 
-	public static void main(String[] args) {
-		JFrame f = new JFrame();
-		ToolboxPanel t = new ToolboxPanel();
-		f.add(t);
-		f.setVisible(true);
-		f.setSize(new Dimension(300,300));
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	}
 	/**
 	 * 
 	 * @param c

@@ -1,14 +1,39 @@
 package dessin;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.io.File;
 import java.util.Collection;
+import java.util.Observable;
+import java.util.Observer;
 
-public class DefaultDessinModel extends AbstractDessinModel implements DessinModel{
+import toolbox.ToolboxModel;
+
+public class DefaultDessinModel extends Observable implements DessinModel  {
+	private File file;
+	private ToolboxModel toolboxModel;
+	private Color c;
+	/**
+	 * Constructeur par defaut, genere un fichier sans titre.
+	 */
+	public DefaultDessinModel(ToolboxModel m) {
+		this.toolboxModel  = m;
+		this.file = new File("Sans titre");
+	}
+	/**
+	 * Instancie l'AbstractDessinModel et ouvre un fichier donne en parametre.
+	 * @param f
+	 */
+	public DefaultDessinModel(ToolboxModel m, File f) {
+		this.toolboxModel = m;
+		open(f);
+	}
+
 	/**
 	 * @author duponcha,debuer,vasseurn
 	 */
@@ -125,5 +150,51 @@ public class DefaultDessinModel extends AbstractDessinModel implements DessinMod
 	public Collection<Shape> getShapes() {
 		return shapes;
 	}
+	
+	/**
+	 * permet d'obtenir la couleur du dessin actuelle.
+	 * @return la couleur actuelle 
+	 */
+	public Color getColor() { return c;}
+	/**
+	 * permet de definir la couleur actuelle
+	 * @param g
+	 * 
+	 */
+	public void setColor(Color g) { this.c = g;}
+	
+
+	/**
+	 * Sauvegarde le fichier
+	 */
+	@Override
+	public void save() {
+		// TODO Sauvegarder le fichier
+
+	}
+	/**
+	 * Ouvre le fichier
+	 */
+	@Override
+	public void open(File file) {
+		// TODO Ouvrir le fichier
+	}
+	/**
+	 * Retourne le ToolboxModel associe au DessinModel.
+	 * @return le ToolboxModel 
+	 */
+	@Override
+	public ToolboxModel getToolBoxModel() {
+		return this.toolboxModel;
+	}
+	/**
+	 * Associe le ToolboxModel au DessinModel.
+	 * @param m
+	 */
+	@Override
+	public void setToolboxModel(ToolboxModel m) {
+		this.toolboxModel = m;
+	}
+	
 
 }

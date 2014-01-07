@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 
 import toolbox.DefaultToolboxModel;
+import toolbox.ToolboxModel;
 import toolbox.ToolboxPanel;
 
 import dessin.DefaultDessinModel;
@@ -27,16 +28,20 @@ public class MainFrame extends JFrame {
 		super("Dessin");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		
-		DessinModel m = new DefaultDessinModel();
+		DessinModel m = new DefaultDessinModel(null);
 		Dessin dessinFrame = new Dessin(m);
+		ToolboxModel tm = new DefaultToolboxModel(m);
+		ToolboxPanel tp = new ToolboxPanel(tm);
+		m.setToolboxModel(tm);
+		
+		
 		
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(dessinFrame, BorderLayout.CENTER);
-		getContentPane().add(new ToolboxPanel(new DefaultToolboxModel(m)), BorderLayout.SOUTH);
+		getContentPane().add(tp, BorderLayout.SOUTH);
 		
         setJMenuBar(new MenuVue());
-		
+		          
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
