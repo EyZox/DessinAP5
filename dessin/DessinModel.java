@@ -2,7 +2,6 @@ package dessin;
 
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.Shape;
 import java.io.File;
 import java.util.Collection;
 import java.util.Observer;
@@ -19,10 +18,8 @@ public interface DessinModel {
 	public void addTri(Point p1, Point p2);
 	public void addPoly(Collection<Point> points);
 	
-	public void remove(Shape shape);
+	public void remove(ShapeComponent shape);
 	public void clear();
-	public void move(Shape shape, Point p);
-	public void resize(Shape shape, Point p);
 	
 	
 	//Fonction I/O
@@ -30,7 +27,7 @@ public interface DessinModel {
 	public void open(File file);
 	
 	//Getter & Setter
-	public Collection<Shape> getShapes(); //TODO Remplacer par ShapeComponent SEULEMENT quand l'objet sera pret
+	public Collection<ShapeComponent> getShapes();
 	public ToolboxModel getToolBoxModel();
 	public void setToolboxModel(ToolboxModel m);
 	

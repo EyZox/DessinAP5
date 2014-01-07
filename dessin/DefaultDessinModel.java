@@ -11,11 +11,20 @@ import java.awt.geom.Line2D;
 import java.io.File;
 import java.util.Collection;
 import java.util.Observable;
-import java.util.Observer;
 
 import toolbox.ToolboxModel;
 
 public class DefaultDessinModel extends Observable implements DessinModel  {
+	/**
+	 * @author duponcha,debuer,vasseurn
+	 */
+	private ListenedList<ShapeComponent> shapes = new ListenedList<ShapeComponent>(new Runnable() {
+		@Override
+		public void run() {
+			setChanged();
+			notifyObservers();
+		}
+	});
 	private File file;
 	private ToolboxModel toolboxModel;
 	private Color c;
@@ -34,17 +43,6 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		this.toolboxModel = m;
 		open(f);
 	}
-
-	/**
-	 * @author duponcha,debuer,vasseurn
-	 */
-	private ListenedList<Shape> shapes = new ListenedList<Shape>(new Runnable() {
-		@Override
-		public void run() {
-			setChanged();
-			notifyObservers();
-		}
-	});
 	
 	
 	/**
@@ -55,7 +53,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	public void addLine(Point p1, Point p2) {
 		Shape s = new Line2D.Double(p1, p2);
 		System.out.println("Ajout d'une ligne en "+p1+" , "+p2);
-		shapes.add(s);
+		shapes.add(new ShapeComponent(p1, s));
 		System.out.println(shapes);
 	}
 	
@@ -71,7 +69,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
 		Shape s = new Rectangle(debut, new Dimension(fin.x - debut.x,fin.y - debut.y));
 		
-		shapes.add(s);
+		shapes.add(new ShapeComponent(debut, s));
 	}
 	
 	/**
@@ -84,7 +82,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		Point debut = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
 		Shape s = new Ellipse2D.Double(debut.x, debut.y, fin.x - debut.x, fin.y - debut.y);
-		shapes.add(s);
+		shapes.add(new ShapeComponent(debut, s));
 	}
 	
 	/**
@@ -99,7 +97,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		x[0]=p1.x; x[1]=p1.x; x[2]=p2.x;
 		y[0]=p1.y; y[1]=p2.y; y[2]=p2.y;
 		Shape s = new Polygon(x, y, 3);
-		shapes.add(s);
+		shapes.add(new ShapeComponent(p1, s));
 		
 	}
 	
@@ -118,7 +116,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	 * @param shape
 	 */
 	@Override
-	public void remove(Shape shape) {
+	public void remove(ShapeComponent shape) {
 		shapes.remove(shape);
 		
 	}
@@ -132,35 +130,13 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		
 	}
 	
-	/**
-	 * Deplace une figure
-	 * param shape p
-	 */
-	@Override
-	public void move(Shape shape, Point p) {
-		Rectangle r = shape.getBounds();
-		r.setBounds(r.x+p.x,r.y+p.y,r.width,r.height);
-		shapes.add(r);
-	}
-	
-	/**
-	 * Redimensionne une figure
-	 * @param shape  p
-	 */
-	@Override
-	public void resize(Shape shape, Point p) {
-		Rectangle r = shape.getBounds();
-		r.setBounds(r.x,r.y,r.width+p.x,r.height+p.y);
-		shapes.add(r);
-		
-	}
 	
 	/**
 	 * Retourne la liste des figures
 	 * @return liste de shapes
 	 */
 	@Override
-	public Collection<Shape> getShapes() {
+	public Collection<ShapeComponent> getShapes() {
 		return shapes;
 	}
 	

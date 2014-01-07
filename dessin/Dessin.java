@@ -3,7 +3,6 @@ package dessin;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Shape;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,6 +27,7 @@ public class Dessin extends JPanel implements Observer{
 		this.model = m;
 		this.model.addObserver(this);
 		this.setBackground(Color.WHITE);
+		this.setLayout(null);
 		this.setPreferredSize(new java.awt.Dimension(640,480));
 		
 		new DessinControler(this);
@@ -37,6 +37,11 @@ public class Dessin extends JPanel implements Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		removeAll();
+		for(ShapeComponent shape : model.getShapes()) {
+			shape.setBounds(0, 0, shape.getPreferredSize().width, shape.getPreferredSize().height);
+			add(shape);
+		}
 		repaint();
 		
 	}
@@ -46,19 +51,11 @@ public class Dessin extends JPanel implements Observer{
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		System.out.println("repaint()");
 		Graphics2D g2d = (Graphics2D) g;
-		
-		System.out.println("Update");
-		
-		// Dessine le background
 		g2d.setColor(getBackground());
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
-		
-		//Dessine les shapes
-		g2d.setColor(Color.BLACK);
-		for(Shape shape : model.getShapes()) {
-			g2d.draw(shape);
-		}
 	}
 	/**
 	 * Retourne le Model du Dessin.
