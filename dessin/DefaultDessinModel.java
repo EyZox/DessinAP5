@@ -71,7 +71,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
 		Shape s = new Rectangle(new Point(0,0), new Dimension(fin.x - debut.x,fin.y - debut.y));
 		
-		shapes.add(new ShapeComponent(debut, s));
+		shapes.add(new ShapeComponent(debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), 1));
 	}
 	
 	/**
@@ -84,7 +84,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		Point debut = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
 		Shape s = new Ellipse2D.Double(0, 0, fin.x - debut.x, fin.y - debut.y);
-		shapes.add(new ShapeComponent(debut, s));
+		shapes.add(new ShapeComponent(debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), 1));
 	}
 	
 	/**

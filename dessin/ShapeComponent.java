@@ -23,10 +23,10 @@ public class ShapeComponent extends JPanel {
 		this(anchor, s, Color.WHITE, Color.BLACK, 1);
 	}
 	
-	public ShapeComponent(Point anchor,Shape s, Color fillColor, Color borderColor, int strokeSize) {
+	public ShapeComponent(Point anchor,Shape s, Color borderColor, Color fillColor, int strokeSize) {
 		this.setAnchor(anchor);
 		this.s = s;
-		this.setStrockeSize(strokeSize);
+		this.setStrokeSize(strokeSize);
 		this.fillColor = fillColor;
 		this.borderColor = borderColor;
 		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth())+1, (int)(s.getBounds2D().getHeight())+1));
@@ -49,7 +49,7 @@ public class ShapeComponent extends JPanel {
 	}
 	
 	
-	public void setStrockeSize(int size) {
+	public void setStrokeSize(int size) {
 		if(size <= 0) this.strokeSize = 1;
 		else this.strokeSize = size;
 		repaint();

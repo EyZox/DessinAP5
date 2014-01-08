@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import toolbox.color.ColorButton;
+
 /**
  * 
  * @author debuer,duponcha,vasseurm
@@ -110,7 +112,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 	}
 	
 	private JButton carre,cercle,triangle,polygone,droite,curseur,supprimer,loupe,hand;
-	private JButton color = new ColorButton();
+	private ColorButton color;
 	private  ToolboxModel model;
 	
 
@@ -120,6 +122,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.model = m;
 		this.setLayout(new FlowLayout());
 		
+		color = new ColorButton(model);
 		carre = new JButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));
 		cercle = new JButton(new ImageIcon(this.getClass().getResource("/img/oval.png")));
 		triangle = new JButton(new ImageIcon(this.getClass().getResource("/img/triangle.png")));
@@ -129,7 +132,6 @@ public class ToolboxPanel extends JPanel implements Observer{
 		loupe = new JButton(new ImageIcon(this.getClass().getResource("/img/loupe.png")));
 		supprimer = new JButton(new ImageIcon(this.getClass().getResource("/img/supprimer.png")));
 		hand = new JButton(new ImageIcon(this.getClass().getResource("/img/hand.png")));
-		color = new ColorButton();
 		
 		carre.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/carreOver.png")));
 		cercle.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/ovalOver.png")));
@@ -175,8 +177,6 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.customAdd(color);
 		
 		new ToolboxControler();
-		
-		
 
 	}
 
@@ -190,6 +190,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 		c.setAlignmentX(CENTER_ALIGNMENT);
 		add(c);
 	}
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub

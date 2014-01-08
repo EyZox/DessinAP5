@@ -1,4 +1,4 @@
-package toolbox;
+package toolbox.color;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,19 +10,21 @@ import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import toolbox.ToolboxModel;
+
 @SuppressWarnings("serial")
-public class ColorSelection extends JFrame {
+public class ColorFrame extends JFrame {
 	private JColorChooser lcp,lcs;
-	public ColorSelection(Color font, Color fill,final ColorButton cb) {
+	public ColorFrame(final ToolboxModel model) {
 
 		JPanel reponse = new JPanel();
 		JButton annuler = new JButton("Annuler");
 		JButton ok = new JButton("Ok");
 		reponse.add(annuler);
 		reponse.add(ok);
-		lcp = new JColorChooser(font);
+		lcp = new JColorChooser(model.getStrokeColor());
 		lcp.getPreviewPanel().getParent().setVisible(false);
-		lcs = new JColorChooser(fill);
+		lcs = new JColorChooser(model.getFillColor());
 		lcs.getPreviewPanel().getParent().setVisible(false);
 		this.getContentPane().add(lcp, BorderLayout.WEST);
 		this.getContentPane().add(lcs, BorderLayout.EAST);
@@ -40,11 +42,9 @@ public class ColorSelection extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				cb.setFontColor(lcp.getColor());
-				cb.setFillColor(lcs.getColor());
+				model.setStrokeColor(lcp.getColor());
+				model.setFillColor(lcs.getColor());
 				dispose();
-				cb.repaint();
-
 			}
 
 		});

@@ -1,14 +1,15 @@
 package toolbox;
 
 
+import java.awt.Color;
 import java.util.Observable;
 
-import dessin.DefaultDessinModel;
 import dessin.DessinModel;
 
 public class DefaultToolboxModel extends Observable implements ToolboxModel {
 	private DessinModel model;
 	private ExpectedOperation action = ExpectedOperation.CURSOR;
+	private Color strokeColor =  Color.BLACK, fillColor = Color.WHITE;
 	
 
 	
@@ -36,6 +37,31 @@ public class DefaultToolboxModel extends Observable implements ToolboxModel {
 	public void setExpectedOperation(ExpectedOperation operation) {
 		this.action = operation;
 		
+	}
+
+	@Override
+	public void setStrokeColor(Color c) {
+		this.strokeColor = c;
+		setChanged();
+		notifyObservers();
+		
+	}
+
+	@Override
+	public Color getStrokeColor() {
+		return this.strokeColor;
+	}
+
+	@Override
+	public void setFillColor(Color c) {
+		this.fillColor = c;
+		setChanged();
+		notifyObservers();
+	}
+
+	@Override
+	public Color getFillColor() {
+		return this.fillColor;
 	}
 
 
