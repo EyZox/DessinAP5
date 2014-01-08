@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 import toolbox.color.ColorButton;
 
@@ -111,8 +113,8 @@ public class ToolboxPanel extends JPanel implements Observer{
 
 	}
 	
-	private JButton carre,cercle,triangle,polygone,droite,curseur,supprimer,loupe,hand;
-	private ColorButton color;
+	private JRadioButton carre,cercle,triangle,polygone,droite,curseur,supprimer,loupe,hand;
+	private JButton color;
 	private  ToolboxModel model;
 	
 
@@ -123,15 +125,15 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.setLayout(new FlowLayout());
 		
 		color = new ColorButton(model);
-		carre = new JButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));
-		cercle = new JButton(new ImageIcon(this.getClass().getResource("/img/oval.png")));
-		triangle = new JButton(new ImageIcon(this.getClass().getResource("/img/triangle.png")));
-		polygone = new JButton(new ImageIcon(this.getClass().getResource("/img/polygone.png")));
-		droite = new JButton(new ImageIcon(this.getClass().getResource("/img/ligne.png")));
-		curseur = new JButton(new ImageIcon(this.getClass().getResource("/img/cursor.png")));
-		loupe = new JButton(new ImageIcon(this.getClass().getResource("/img/loupe.png")));
-		supprimer = new JButton(new ImageIcon(this.getClass().getResource("/img/supprimer.png")));
-		hand = new JButton(new ImageIcon(this.getClass().getResource("/img/hand.png")));
+		carre = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));
+		cercle = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/oval.png")));
+		triangle = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/triangle.png")));
+		polygone = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/polygone.png")));
+		droite = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/ligne.png")));
+		curseur = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/cursor.png")));
+		loupe = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/loupe.png")));
+		supprimer = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/supprimer.png")));
+		hand = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/hand.png")));
 		
 		carre.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/carreOver.png")));
 		cercle.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/ovalOver.png")));
@@ -143,40 +145,28 @@ public class ToolboxPanel extends JPanel implements Observer{
 		supprimer.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/supprimerOver.png")));
 		hand.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/handOver.png")));
 		
-		carre.setContentAreaFilled(false);
-		cercle.setContentAreaFilled(false);
-		triangle.setContentAreaFilled(false);
-		polygone.setContentAreaFilled(false);
-		curseur.setContentAreaFilled(false);
-		loupe.setContentAreaFilled(false);
-		supprimer.setContentAreaFilled(false);
-		hand.setContentAreaFilled(false);
-		droite.setContentAreaFilled(false);
+		ButtonGroup group = new ButtonGroup();
+		group.add(carre);group.add(triangle);
+		group.add(cercle);group.add(polygone);
+		group.add(droite);group.add(curseur);
+		group.add(loupe);group.add(hand);
+		group.add(supprimer);
 		
-		carre.setBorder(null);
-		cercle.setBorder(null);
-		triangle.setBorder(null);
-		polygone.setBorder(null);
-		curseur.setBorder(null);
-		loupe.setBorder(null);
-		supprimer.setBorder(null);
-		hand.setBorder(null);
-		droite.setBorder(null);
-		
-		
+		this.customAdd(curseur);
+		this.customAdd(loupe);
+		this.customAdd(hand);
+		this.customAdd(droite);
 		this.customAdd(carre);
 		this.customAdd(triangle);
 		this.customAdd(cercle);
 		this.customAdd(polygone);
-		this.customAdd(droite);
-		this.customAdd(curseur);
-		this.customAdd(loupe);
-		this.customAdd(hand);
 		this.customAdd(supprimer);
 		color.setPreferredSize(carre.getPreferredSize());
 		this.customAdd(color);
 		
 		new ToolboxControler();
+		
+		curseur.setSelected(true);
 
 	}
 
