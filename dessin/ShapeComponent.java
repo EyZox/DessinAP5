@@ -29,7 +29,7 @@ public class ShapeComponent extends JPanel {
 		this.setStrokeSize(strokeSize);
 		this.fillColor = fillColor;
 		this.borderColor = borderColor;
-		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth())+1, (int)(s.getBounds2D().getHeight())+1));
+		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth())+this.strokeSize, (int)(s.getBounds2D().getHeight())+this.strokeSize));
 	}
 
 	public Point getAnchor() {
