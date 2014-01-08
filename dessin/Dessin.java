@@ -39,7 +39,7 @@ public class Dessin extends JPanel implements Observer{
 	public void update(Observable arg0, Object arg1) {
 		removeAll();
 		for(ShapeComponent shape : model.getShapes()) {
-			shape.setBounds(0, 0, shape.getPreferredSize().width, shape.getPreferredSize().height);
+			shape.setBounds(shape.getAnchor().x, shape.getAnchor().y, shape.getPreferredSize().width, shape.getPreferredSize().height);
 			add(shape);
 		}
 		repaint();
@@ -52,7 +52,6 @@ public class Dessin extends JPanel implements Observer{
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		System.out.println("repaint()");
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(getBackground());
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());

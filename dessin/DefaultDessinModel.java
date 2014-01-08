@@ -51,10 +51,12 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	 */
 	@Override
 	public void addLine(Point p1, Point p2) {
+		// Ne fonctionne pas :
+		// En fait, il faut créer la shape a partir des coordonées (0,0), vu qu'on fixe le point d'ancrage sur le dessin (cad la position de la figue),
+		// en le passant en parametre dans le contructeur de ShapeComponent (Exemple avec Rect ou Cercle)
+		// Donc ici, il faut trouver le vecteur permettant de faire une translation avec tout les points pour ramener les coordonée a (0,0);
 		Shape s = new Line2D.Double(p1, p2);
-		System.out.println("Ajout d'une ligne en "+p1+" , "+p2);
 		shapes.add(new ShapeComponent(p1, s));
-		System.out.println(shapes);
 	}
 	
 	/**
@@ -67,7 +69,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		
 		Point debut = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
-		Shape s = new Rectangle(debut, new Dimension(fin.x - debut.x,fin.y - debut.y));
+		Shape s = new Rectangle(new Point(0,0), new Dimension(fin.x - debut.x,fin.y - debut.y));
 		
 		shapes.add(new ShapeComponent(debut, s));
 	}
@@ -81,7 +83,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	public void addOval(Point p1, Point p2) {
 		Point debut = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
-		Shape s = new Ellipse2D.Double(debut.x, debut.y, fin.x - debut.x, fin.y - debut.y);
+		Shape s = new Ellipse2D.Double(0, 0, fin.x - debut.x, fin.y - debut.y);
 		shapes.add(new ShapeComponent(debut, s));
 	}
 	
@@ -91,6 +93,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	 */
 	@Override
 	public void addTri(Point p1, Point p2) {
+		//Ne fonctionne pas correctement : voir addLine()
 		int[]x = new int[3];
 		int[]y = new int[3];
 			

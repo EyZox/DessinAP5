@@ -11,9 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import dessin.ColorButton;
-import dessin.ColorSelection;
-
 /**
  * 
  * @author debuer,duponcha,vasseurm
