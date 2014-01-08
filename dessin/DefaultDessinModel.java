@@ -51,18 +51,11 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	 */
 	@Override
 	public void addLine(Point p1, Point p2) {
-		// Ne fonctionne pas :
-		// En fait, il faut créer la shape a partir des coordonées (0,0), vu qu'on fixe le point d'ancrage sur le dessin (cad la position de la figue),
-		// en le passant en parametre dans le contructeur de ShapeComponent (Exemple avec Rect ou Cercle)
-		// Donc ici, il faut trouver le vecteur permettant de faire une translation avec tout les points pour ramener les coordonée a (0,0);
 		Point topLeftCorner = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
-		System.out.println("mouse pressed : " + p1.x + " , " + p1.y);
-		System.out.println("Vous avez relaché : "+ p2.x + " , " + p2.y);
 		p1.translate(-topLeftCorner.x, -topLeftCorner.y);
 		p2.translate(-topLeftCorner.x, -topLeftCorner.y);
 		Shape s = new Line2D.Double(p1, p2);
-		System.out.println("Line : " + p1 + " || " + p2);
-		shapes.add(new ShapeComponent(topLeftCorner, s));
+		shapes.add(new ShapeComponent(topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), 1));
 	}
 	
 	/**
@@ -99,14 +92,14 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	 */
 	@Override
 	public void addTri(Point p1, Point p2) {
-		//Ne fonctionne pas correctement : voir addLine()
 		int[]x = new int[3];
 		int[]y = new int[3];
-			
-		x[0]=p1.x; x[1]=p1.x; x[2]=p2.x;
-		y[0]=p1.y; y[1]=p2.y; y[2]=p2.y;
+		Point topLeftCorner = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
+		
+		x[0]=p1.x-topLeftCorner.x; x[1]=p1.x-topLeftCorner.x; x[2]=p2.x-topLeftCorner.x;
+		y[0]=p1.y-topLeftCorner.y; y[1]=p2.y-topLeftCorner.y; y[2]=p2.y-topLeftCorner.y;
 		Shape s = new Polygon(x, y, 3);
-		shapes.add(new ShapeComponent(p1, s));
+		shapes.add(new ShapeComponent(topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), 1));
 		
 	}
 	
