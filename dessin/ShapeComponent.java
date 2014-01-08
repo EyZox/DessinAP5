@@ -9,7 +9,6 @@ import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -21,7 +20,7 @@ public class ShapeComponent extends JPanel {
 	private int strokeSize;
 
 	public ShapeComponent(Point anchor,Shape s) {
-		this(anchor, s, Color.GRAY, Color.BLACK, 1);
+		this(anchor, s, Color.WHITE, Color.BLACK, 1);
 	}
 	
 	public ShapeComponent(Point anchor,Shape s, Color fillColor, Color borderColor, int strokeSize) {
@@ -30,7 +29,7 @@ public class ShapeComponent extends JPanel {
 		this.setStrockeSize(strokeSize);
 		this.fillColor = fillColor;
 		this.borderColor = borderColor;
-		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth()), (int)(s.getBounds2D().getHeight())));
+		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth())+1, (int)(s.getBounds2D().getHeight())+1));
 	}
 
 	public Point getAnchor() {
@@ -60,10 +59,10 @@ public class ShapeComponent extends JPanel {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setStroke(new BasicStroke(strokeSize));
-		/*g2d.setColor(borderColor);
-		g2d.draw(s);*/
 		g2d.setColor(fillColor);
 		g2d.fill(s);
+		g2d.setColor(borderColor);
+		g2d.draw(s);
 	}
 
 
