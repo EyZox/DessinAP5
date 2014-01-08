@@ -55,8 +55,14 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		// En fait, il faut créer la shape a partir des coordonées (0,0), vu qu'on fixe le point d'ancrage sur le dessin (cad la position de la figue),
 		// en le passant en parametre dans le contructeur de ShapeComponent (Exemple avec Rect ou Cercle)
 		// Donc ici, il faut trouver le vecteur permettant de faire une translation avec tout les points pour ramener les coordonée a (0,0);
+		Point topLeftCorner = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
+		System.out.println("mouse pressed : " + p1.x + " , " + p1.y);
+		System.out.println("Vous avez relaché : "+ p2.x + " , " + p2.y);
+		p1.translate(-topLeftCorner.x, -topLeftCorner.y);
+		p2.translate(-topLeftCorner.x, -topLeftCorner.y);
 		Shape s = new Line2D.Double(p1, p2);
-		shapes.add(new ShapeComponent(p1, s));
+		System.out.println("Line : " + p1 + " || " + p2);
+		shapes.add(new ShapeComponent(topLeftCorner, s));
 	}
 	
 	/**
