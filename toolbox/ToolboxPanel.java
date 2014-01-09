@@ -1,11 +1,13 @@
 package toolbox;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,7 +15,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import toolbox.color.ColorButton;
+import toolbox.items.ItemButton;
+import toolbox.items.color.ColorButton;
 
 /**
  * 
@@ -125,32 +128,15 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.setLayout(new FlowLayout());
 		
 		color = new ColorButton(model);
-		carre = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));
-		cercle = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/oval.png")));
-		triangle = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/triangle.png")));
-		polygone = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/polygone.png")));
-		droite = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/ligne.png")));
-		curseur = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/cursor.png")));
-		loupe = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/loupe.png")));
-		supprimer = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/supprimer.png")));
-		hand = new JRadioButton(new ImageIcon(this.getClass().getResource("/img/hand.png")));
-		
-		carre.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/carreOver.png")));
-		cercle.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/ovalOver.png")));
-		triangle.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/triangleOver.png")));
-		polygone.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/polygoneOver.png")));
-		droite.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/ligneOver.png")));
-		curseur.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/cursorOver.png")));
-		loupe.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/loupeOver.png")));
-		supprimer.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/supprimerOver.png")));
-		hand.setRolloverIcon(new ImageIcon(this.getClass().getResource("/img/handOver.png")));
-		
-		ButtonGroup group = new ButtonGroup();
-		group.add(carre);group.add(triangle);
-		group.add(cercle);group.add(polygone);
-		group.add(droite);group.add(curseur);
-		group.add(loupe);group.add(hand);
-		group.add(supprimer);
+		carre = new ItemButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));
+		cercle = new ItemButton(new ImageIcon(this.getClass().getResource("/img/oval.png")));
+		triangle = new ItemButton(new ImageIcon(this.getClass().getResource("/img/triangle.png")));
+		polygone = new ItemButton(new ImageIcon(this.getClass().getResource("/img/polygone.png")));
+		droite = new ItemButton(new ImageIcon(this.getClass().getResource("/img/ligne.png")));
+		curseur = new ItemButton(new ImageIcon(this.getClass().getResource("/img/cursor.png")));
+		loupe = new ItemButton(new ImageIcon(this.getClass().getResource("/img/loupe.png")));
+		supprimer = new ItemButton(new ImageIcon(this.getClass().getResource("/img/supprimer.png")));
+		hand = new ItemButton(new ImageIcon(this.getClass().getResource("/img/hand.png")));
 		
 		this.customAdd(curseur);
 		this.customAdd(loupe);
@@ -165,9 +151,8 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.customAdd(color);
 		
 		new ToolboxControler();
-		
-		curseur.setSelected(true);
 
+		curseur.setSelected(true);
 	}
 
 

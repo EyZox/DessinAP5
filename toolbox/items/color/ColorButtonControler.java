@@ -1,4 +1,4 @@
-package toolbox.color;
+package toolbox.items.color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

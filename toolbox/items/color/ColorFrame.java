@@ -1,4 +1,4 @@
-package toolbox.color;
+package toolbox.items.color;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

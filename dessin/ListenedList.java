@@ -20,9 +20,9 @@ public class ListenedList<E> extends ArrayList<E> {
 	 */
 	@Override
 	public boolean add(E e) {
-		boolean b = super.add(e);
+		super.add(0,e);
 		r.run();
-		return b;
+		return true;
 	}
 
 	/**
