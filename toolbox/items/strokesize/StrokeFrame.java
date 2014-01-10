@@ -32,7 +32,6 @@ JLabel valeur;
 
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				model.setStroke(epaisseur.getValue());
 				valeur.setText(epaisseur.getValue()+ "/" + epaisseur.getMaximum());
 			}
 			
@@ -51,7 +50,7 @@ JLabel valeur;
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				model.setStroke(epaisseur.getValue());
+				model.setStrokeSize(epaisseur.getValue());
 				dispose();
 			}
 
@@ -62,7 +61,6 @@ JLabel valeur;
 		this.getContentPane().add(valeur);
 		this.pack();
 		this.setLocationRelativeTo(null);
-		this.setVisible(false);
 	}
 
 }
