@@ -151,6 +151,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.customAdd(supprimer);
 		color.setPreferredSize(carre.getPreferredSize());
 		this.customAdd(color);
+		stroke.setPreferredSize(carre.getPreferredSize());
 		this.customAdd(stroke);
 		
 		new ToolboxControler();
