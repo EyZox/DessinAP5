@@ -24,6 +24,7 @@ public class ShapeComponent extends JPanel {
 	}
 	
 	public ShapeComponent(Point anchor,Shape s, Color borderColor, Color fillColor, int strokeSize) {
+		anchor.translate(-strokeSize/2, -strokeSize/2);
 		this.setAnchor(anchor);
 		this.s = s;
 		this.setStrokeSize(strokeSize);
@@ -38,6 +39,7 @@ public class ShapeComponent extends JPanel {
 
 	public void setAnchor(Point anchor) {
 		this.anchor = anchor;
+		if(getParent() != null) getParent().repaint();
 	}
 
 	public void resize(int newWidth, int newHeight) {
@@ -50,8 +52,13 @@ public class ShapeComponent extends JPanel {
 	
 	
 	public void setStrokeSize(int size) {
-		if(size <= 0) this.strokeSize = 1;
-		else this.strokeSize = size;
+		if(size > strokeSize) {
+			anchor.translate(size/2, size/2);
+		}else {
+			anchor.translate(-size/2, -size/2);
+		}
+		this.strokeSize = size;
+		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth())+this.strokeSize, (int)(s.getBounds2D().getHeight())+this.strokeSize));
 		repaint();
 	}
 	
@@ -60,6 +67,7 @@ public class ShapeComponent extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setStroke(new BasicStroke(strokeSize));
 		g2d.setColor(fillColor);
+		g2d.translate(strokeSize/2, strokeSize/2);
 		g2d.fill(s);
 		g2d.setColor(borderColor);
 		g2d.draw(s);
