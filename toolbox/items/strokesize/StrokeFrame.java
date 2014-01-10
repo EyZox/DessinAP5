@@ -14,11 +14,11 @@ import toolbox.ToolboxModel;
 
 @SuppressWarnings("serial")
 public class StrokeFrame extends JFrame {
-JSlider epaisseur;
-JButton ok,annuler;
-JLabel valeur;
+	private JSlider epaisseur;
+	private JButton ok,annuler;
+	private JLabel valeur;
 	public StrokeFrame(final ToolboxModel model) {
-		
+
 		this.setLayout(new FlowLayout());
 		this.setTitle("Taille Pinceau");
 		epaisseur = new JSlider(1,20);
@@ -34,9 +34,9 @@ JLabel valeur;
 			public void stateChanged(ChangeEvent arg0) {
 				valeur.setText(epaisseur.getValue()+ "/" + epaisseur.getMaximum());
 			}
-			
+
 		});
-		
+
 		annuler.addActionListener(new ActionListener() {
 
 			@Override
