@@ -6,7 +6,6 @@ import java.util.Observer;
 import javax.swing.JButton;
 
 import toolbox.ToolboxModel;
-import toolbox.items.color.ColorButtonControler;
 
 @SuppressWarnings("serial")
 public class StrokeSizeButton extends JButton implements Observer{
@@ -14,7 +13,7 @@ public class StrokeSizeButton extends JButton implements Observer{
 
 	public StrokeSizeButton(ToolboxModel m) {
 		model = m;
-		//new StrokeSizeControler(this);
+		new StrokeSizeControler(this);
 		model.addObserver(this);
 
 	}
