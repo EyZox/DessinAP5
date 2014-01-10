@@ -17,6 +17,7 @@ import javax.swing.JRadioButton;
 
 import toolbox.items.ItemButton;
 import toolbox.items.color.ColorButton;
+import toolbox.items.strokesize.StrokeSizeButton;
 
 /**
  * 
@@ -117,7 +118,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 	}
 	
 	private JRadioButton carre,cercle,triangle,polygone,droite,curseur,supprimer,loupe,hand;
-	private JButton color;
+	private JButton color,stroke;
 	private  ToolboxModel model;
 	
 
@@ -128,6 +129,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.setLayout(new FlowLayout());
 		
 		color = new ColorButton(model);
+		stroke = new StrokeSizeButton(model);
 		carre = new ItemButton(new ImageIcon(this.getClass().getResource("/img/carre.png")));
 		cercle = new ItemButton(new ImageIcon(this.getClass().getResource("/img/oval.png")));
 		triangle = new ItemButton(new ImageIcon(this.getClass().getResource("/img/triangle.png")));
@@ -149,6 +151,7 @@ public class ToolboxPanel extends JPanel implements Observer{
 		this.customAdd(supprimer);
 		color.setPreferredSize(carre.getPreferredSize());
 		this.customAdd(color);
+		this.customAdd(stroke);
 		
 		new ToolboxControler();
 

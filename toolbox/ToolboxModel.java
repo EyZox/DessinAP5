@@ -20,5 +20,7 @@ public interface ToolboxModel {
 	public Color getStrokeColor();
 	public void setFillColor(Color c);
 	public Color getFillColor();
+	public void setStroke(int value);
+	public int getstrokeValue();
 
 }

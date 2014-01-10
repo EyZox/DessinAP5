@@ -10,11 +10,12 @@ public class DefaultToolboxModel extends Observable implements ToolboxModel {
 	private DessinModel model;
 	private ExpectedOperation action = ExpectedOperation.CURSOR;
 	private Color strokeColor =  Color.BLACK, fillColor = Color.WHITE;
-	
+	private int stroke;
 
 	
 	public DefaultToolboxModel(DessinModel m) {
 		this.model = m;
+		stroke = 1;
 	}
 
 	@Override
@@ -62,6 +63,20 @@ public class DefaultToolboxModel extends Observable implements ToolboxModel {
 	@Override
 	public Color getFillColor() {
 		return this.fillColor;
+	}
+
+	@Override
+	public void setStroke(int value) {
+		if(value < 1) {
+			stroke = 1;
+		}
+		this.stroke = value;
+		
+	}
+
+	@Override
+	public int getstrokeValue() {
+		return this.stroke;
 	}
 
 
