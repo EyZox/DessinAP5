@@ -55,7 +55,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		p1.translate(-topLeftCorner.x, -topLeftCorner.y);
 		p2.translate(-topLeftCorner.x, -topLeftCorner.y);
 		Shape s = new Line2D.Double(p1, p2);
-		shapes.add(new ShapeComponent(topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getstrokeValue()));
+		shapes.add(new ShapeComponent(topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
 		Shape s = new Rectangle(new Point(0,0), new Dimension(fin.x - debut.x,fin.y - debut.y));
 		
-		shapes.add(new ShapeComponent(debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getstrokeValue()));
+		shapes.add(new ShapeComponent(debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		Point debut = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
 		Shape s = new Ellipse2D.Double(0, 0, fin.x - debut.x, fin.y - debut.y);
-		shapes.add(new ShapeComponent(debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getstrokeValue()));
+		shapes.add(new ShapeComponent(debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		x[0]=p1.x-topLeftCorner.x; x[1]=p1.x-topLeftCorner.x; x[2]=p2.x-topLeftCorner.x;
 		y[0]=p1.y-topLeftCorner.y; y[1]=p2.y-topLeftCorner.y; y[2]=p2.y-topLeftCorner.y;
 		Shape s = new Polygon(x, y, 3);
-		shapes.add(new ShapeComponent(topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getstrokeValue()));
+		shapes.add(new ShapeComponent(topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
 		
 	}
 	
