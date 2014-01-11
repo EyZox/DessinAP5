@@ -1,41 +1,31 @@
 package toolbox.items.strokesize;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+
 import toolbox.ToolboxModel;
+import toolbox.items.JSliderWithLabel;
 
 @SuppressWarnings("serial")
 public class StrokeFrame extends JFrame {
-	private JSlider epaisseur;
+	private JSliderWithLabel epaisseur;
 	private JButton ok,annuler;
-	private JLabel valeur;
 	public StrokeFrame(final ToolboxModel model) {
 
-		this.setLayout(new FlowLayout());
+		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 		this.setTitle("Taille Pinceau");
-		epaisseur = new JSlider(1,20);
-		epaisseur.setValue(1);
+		epaisseur = new JSliderWithLabel("Taille du trait :",1,20);
+		epaisseur.getSlider().setValue(model.getStrokeSize());
 		JPanel reponse = new JPanel();
 		annuler = new JButton("Annuler");
 		ok = new JButton("Ok");
-		reponse.add(annuler);
 		reponse.add(ok);
-		epaisseur.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				valeur.setText(epaisseur.getValue()+ "/" + epaisseur.getMaximum());
-			}
-
-		});
+		reponse.add(annuler);
 
 		annuler.addActionListener(new ActionListener() {
 
@@ -50,15 +40,17 @@ public class StrokeFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				model.setStrokeSize(epaisseur.getValue());
+				model.setStrokeSize(epaisseur.getSlider().getValue());
 				dispose();
 			}
 
 		});
-		valeur = new JLabel(epaisseur.getValue()+ "/" + epaisseur.getMaximum());
+		
+		epaisseur.setAlignmentX(CENTER_ALIGNMENT);
+		reponse.setAlignmentX(CENTER_ALIGNMENT);
+		
 		this.getContentPane().add(epaisseur);
 		this.getContentPane().add(reponse);
-		this.getContentPane().add(valeur);
 		this.pack();
 		this.setLocationRelativeTo(null);
 	}
