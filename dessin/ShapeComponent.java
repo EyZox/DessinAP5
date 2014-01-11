@@ -25,13 +25,12 @@ public class ShapeComponent extends JPanel implements Serializable{
 	}
 	
 	public ShapeComponent(Point anchor,Shape s, Color borderColor, Color fillColor, int strokeSize) {
-		anchor.translate(-strokeSize/2, -strokeSize/2);
+		//anchor.translate(-strokeSize/2, -strokeSize/2);
 		this.setAnchor(anchor);
 		this.s = s;
 		this.setStrokeSize(strokeSize);
 		this.fillColor = fillColor;
 		this.borderColor = borderColor;
-		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth())+this.strokeSize, (int)(s.getBounds2D().getHeight())+this.strokeSize));
 	}
 
 	public Point getAnchor() {
@@ -53,11 +52,11 @@ public class ShapeComponent extends JPanel implements Serializable{
 	
 	
 	public void setStrokeSize(int size) {
-		if(size > strokeSize) {
+		/*if(size > strokeSize) {
 			anchor.translate(size/2, size/2);
 		}else {
 			anchor.translate(-size/2, -size/2);
-		}
+		}*/
 		this.strokeSize = size;
 		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth())+this.strokeSize, (int)(s.getBounds2D().getHeight())+this.strokeSize));
 		repaint();
