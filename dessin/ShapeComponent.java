@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
@@ -61,6 +62,7 @@ public class ShapeComponent extends JPanel implements Serializable{
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		g2d.getTransform().setToScale(support.getScale(), support.getScale());
 		g2d.setStroke(new BasicStroke(strokeSize));
 		g2d.setColor(fillColor);
