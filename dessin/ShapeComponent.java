@@ -19,13 +19,14 @@ public class ShapeComponent extends JPanel implements Serializable{
 	private Shape s;
 	private Color fillColor, borderColor;
 	private int strokeSize;
+	private transient DessinModel support;
 
-	public ShapeComponent(Point anchor,Shape s) {
-		this(anchor, s, Color.WHITE, Color.BLACK, 1);
+	public ShapeComponent(DessinModel support,Point anchor,Shape s) {
+		this(support, anchor, s, Color.WHITE, Color.BLACK, 1);
 	}
 	
-	public ShapeComponent(Point anchor,Shape s, Color borderColor, Color fillColor, int strokeSize) {
-		//anchor.translate(-strokeSize/2, -strokeSize/2);
+	public ShapeComponent(DessinModel support,Point anchor,Shape s, Color borderColor, Color fillColor, int strokeSize) {
+		this.support = support;
 		this.setAnchor(anchor);
 		this.s = s;
 		this.setStrokeSize(strokeSize);
@@ -52,11 +53,6 @@ public class ShapeComponent extends JPanel implements Serializable{
 	
 	
 	public void setStrokeSize(int size) {
-		/*if(size > strokeSize) {
-			anchor.translate(size/2, size/2);
-		}else {
-			anchor.translate(-size/2, -size/2);
-		}*/
 		this.strokeSize = size;
 		this.setPreferredSize(new Dimension((int)(s.getBounds2D().getWidth())+this.strokeSize, (int)(s.getBounds2D().getHeight())+this.strokeSize));
 		repaint();
@@ -65,6 +61,7 @@ public class ShapeComponent extends JPanel implements Serializable{
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
+		g2d.getTransform().setToScale(support.getScale(), support.getScale());
 		g2d.setStroke(new BasicStroke(strokeSize));
 		g2d.setColor(fillColor);
 		g2d.translate(strokeSize/2, strokeSize/2);
@@ -102,6 +99,16 @@ public class ShapeComponent extends JPanel implements Serializable{
 	public int getStrokeSize() {
 		return strokeSize;
 	}
+
+	public DessinModel getSupport() {
+		return support;
+	}
+
+	public void setSupport(DessinModel support) {
+		this.support = support;
+	}
+	
+	
 
 
 }

@@ -12,11 +12,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Observable;
 
@@ -36,6 +34,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	private File file;
 	private ToolboxModel toolboxModel;
 	private Color c;
+	private double scale = 1;
 	/**
 	 * Constructeur par defaut, genere un fichier sans titre.
 	 */
@@ -63,7 +62,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		p1.translate(-topLeftCorner.x, -topLeftCorner.y);
 		p2.translate(-topLeftCorner.x, -topLeftCorner.y);
 		Shape s = new Line2D.Double(p1, p2);
-		shapes.add(new ShapeComponent(topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
+		shapes.add(new ShapeComponent(this,topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
 	}
 
 	/**
@@ -78,7 +77,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
 		Shape s = new Rectangle(new Point(0,0), new Dimension(fin.x - debut.x,fin.y - debut.y));
 
-		shapes.add(new ShapeComponent(debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
+		shapes.add(new ShapeComponent(this,debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		Point debut = new Point(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y));
 		Point fin = new Point(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y));
 		Shape s = new Ellipse2D.Double(0, 0, fin.x - debut.x, fin.y - debut.y);
-		shapes.add(new ShapeComponent(debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
+		shapes.add(new ShapeComponent(this,debut, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 		x[0]=p1.x-topLeftCorner.x; x[1]=p1.x-topLeftCorner.x; x[2]=p2.x-topLeftCorner.x;
 		y[0]=p1.y-topLeftCorner.y; y[1]=p2.y-topLeftCorner.y; y[2]=p2.y-topLeftCorner.y;
 		Shape s = new Polygon(x, y, 3);
-		shapes.add(new ShapeComponent(topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
+		shapes.add(new ShapeComponent(this,topLeftCorner, s, toolboxModel.getStrokeColor(), toolboxModel.getFillColor(), toolboxModel.getStrokeSize()));
 
 	}
 
@@ -188,12 +187,25 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	/**
 	 * Ouvre le fichier
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void open(File file) {
 		ObjectInputStream ois = null;
 		try {
 			ois = new ObjectInputStream(new FileInputStream(file));
-			shapes = (ListenedList<ShapeComponent>) ois.readObject();
+			shapes = ((ListenedList<ShapeComponent>) ois.readObject());
+			shapes.setRunnable(new Runnable() {
+				
+				@Override
+				public void run() {
+					setChanged();
+					notifyObservers();
+				}
+			});
+			
+			for(ShapeComponent shape : shapes) {
+				shape.setSupport(this);
+			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -235,6 +247,15 @@ public class DefaultDessinModel extends Observable implements DessinModel  {
 	public void saveAs(File selectedFile) {
 		file = selectedFile;
 		save();
+	}
+	
+	public double getScale() {
+		return scale;
+	}
+	public void setScale(double scale) {
+		this.scale = scale;
+		setChanged();
+		notifyObservers();
 	}
 
 

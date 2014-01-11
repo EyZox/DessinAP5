@@ -38,4 +38,8 @@ public interface DessinModel {
 	public Color getColor();
 	public void setColor(Color g);
 	public void saveAs(File selectedFile);
+	
+	//Zoom
+	public void setScale(double scale);
+	public double getScale();
 }

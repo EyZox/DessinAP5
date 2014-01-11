@@ -43,7 +43,14 @@ public class DessinControler extends MouseAdapter {
 			dessin.getModel().addTri(points.remove(), points.remove());
 			break;
 		case ZOOM:
-			break;
+			if(event.getButton() == MouseEvent.BUTTON1) {
+				//Click gauche
+				dessin.getModel().setScale(dessin.getModel().getScale()+0.1);
+			}else if(event.getButton() == MouseEvent.BUTTON3) {
+				//Click gauche
+				double newScale = dessin.getModel().getScale()-0.1; 
+				dessin.getModel().setScale(newScale>0?newScale:0.1);
+			}
 		default:
 			break;
 		
