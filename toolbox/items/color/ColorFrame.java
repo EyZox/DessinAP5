@@ -21,7 +21,7 @@ import toolbox.ToolboxModel;
 public class ColorFrame extends JFrame {
 	private JColorChooser stroke,fill;
 	public ColorFrame(final ToolboxModel model) {
-		
+		super("Selection de couleurs");
 		/*Ecran de la selection de couleur */
 		stroke = new JColorChooser(model.getStrokeColor());
 		stroke.getPreviewPanel().getParent().setVisible(false);
