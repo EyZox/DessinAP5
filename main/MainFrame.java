@@ -24,15 +24,18 @@ public class MainFrame extends JFrame {
 	/**
 	 * @param args
 	 */
+	
+	private static DessinModel currentDessin;
+	
 	public MainFrame() {
 		super("Dessin");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		DessinModel m = new DefaultDessinModel(null);
-		Dessin dessinFrame = new Dessin(m);
-		ToolboxModel tm = new DefaultToolboxModel(m);
+		currentDessin = new DefaultDessinModel(null);
+		Dessin dessinFrame = new Dessin(currentDessin);
+		ToolboxModel tm = new DefaultToolboxModel(currentDessin);
 		ToolboxPanel tp = new ToolboxPanel(tm);
-		m.setToolboxModel(tm);
+		currentDessin.setToolboxModel(tm);
 		
 		
 		
@@ -50,6 +53,16 @@ public class MainFrame extends JFrame {
 	
 	public static void main(String[] args) {
 		new MainFrame();
+	}
+
+
+	public static DessinModel getCurrentDessin() {
+		return currentDessin;
+	}
+
+
+	public static void setCurrentDessin(DessinModel currentDessin) {
+		MainFrame.currentDessin = currentDessin;
 	}
 
 }

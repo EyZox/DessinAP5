@@ -8,11 +8,12 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class ShapeComponent extends JPanel {
+public class ShapeComponent extends JPanel implements Serializable{
 
 	private Point anchor;
 	private Shape s;
@@ -71,6 +72,36 @@ public class ShapeComponent extends JPanel {
 		g2d.fill(s);
 		g2d.setColor(borderColor);
 		g2d.draw(s);
+	}
+
+	public Shape getShape() {
+		return s;
+	}
+
+	public void setShape(Shape s) {
+		this.s = s;
+	}
+
+	public Color getFillColor() {
+		return fillColor;
+	}
+
+	public void setFillColor(Color fillColor) {
+		this.fillColor = fillColor;
+		repaint();
+	}
+
+	public Color getBorderColor() {
+		return borderColor;
+	}
+
+	public void setBorderColor(Color borderColor) {
+		this.borderColor = borderColor;
+		repaint();
+	}
+
+	public int getStrokeSize() {
+		return strokeSize;
 	}
 
 

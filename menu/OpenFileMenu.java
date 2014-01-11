@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
+import main.MainFrame;
+
 @SuppressWarnings("serial")
 public class OpenFileMenu extends JFrame {
 
@@ -20,6 +22,9 @@ public class OpenFileMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(arg0.getActionCommand().equals(JFileChooser.CANCEL_SELECTION)) {
+					dispose();
+				}else if(arg0.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)) {
+					MainFrame.getCurrentDessin().open(arbre.getSelectedFile());
 					dispose();
 				}
 			}

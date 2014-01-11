@@ -43,7 +43,7 @@ public class MenuControleur {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.notImplemented(e);
+				model.save();
 			}
 		});
 		

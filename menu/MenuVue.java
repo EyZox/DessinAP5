@@ -49,7 +49,6 @@ public class MenuVue extends JMenuBar {
 		//Mise en place et configuration des JMenuItem dans les JMenu
 		this.fichier.add(nouveau);
 		this.fichier.add(ouvrir);
-		this.enregistrer.setEnabled(false);
 		this.fichier.add(enregistrer);
 		this.fichier.add(enregistrerSous);
 

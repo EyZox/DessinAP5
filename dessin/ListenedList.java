@@ -1,12 +1,13 @@
 package dessin;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @SuppressWarnings("serial")
-public class ListenedList<E> extends ArrayList<E> {
+public class ListenedList<E> extends ArrayList<E> implements Serializable{
 	
-	private Runnable r;
+	private transient Runnable r;
 	/**
 	 * Definit un Runnable pour la ListenedList
 	 * @param r
@@ -116,6 +117,12 @@ public class ListenedList<E> extends ArrayList<E> {
 		E e = super.set(index, element);
 		r.run();
 		return e;
+	}
+	public Runnable getRunnable() {
+		return r;
+	}
+	public void setRunnable(Runnable r) {
+		this.r = r;
 	}
 	
 	

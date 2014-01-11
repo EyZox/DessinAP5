@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import main.MainFrame;
+
 /**
  * Cette classe définit le modèle du menu de la fenêtre principal du
  * programme.
@@ -94,6 +96,11 @@ public class MenuModel {
 	//Boutons non implémentés
 	public void notImplemented(ActionEvent e) {
 		System.out.println(e + "Non implémentée");
+	}
+
+	public void save() {
+		MainFrame.getCurrentDessin().save();
+		
 	}
 	
 }

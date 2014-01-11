@@ -37,4 +37,5 @@ public interface DessinModel {
 	//Gestion des couleurs
 	public Color getColor();
 	public void setColor(Color g);
+	public void saveAs(File selectedFile);
 }
