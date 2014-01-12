@@ -7,6 +7,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPanel;
+
+import dessin.layout.DessinLayout;
 /**
  * 
  * @author duponcha,debuer,vasseurn
@@ -27,7 +29,7 @@ public class Dessin extends JPanel implements Observer{
 		this.model = m;
 		this.model.addObserver(this);
 		this.setBackground(Color.WHITE);
-		this.setLayout(null);
+		this.setLayout(null/*new DessinLayout()*/);
 		this.setPreferredSize(new java.awt.Dimension(640,480));
 		
 		new DessinControler(this);
@@ -44,17 +46,6 @@ public class Dessin extends JPanel implements Observer{
 		}
 		repaint();
 		
-	}
-	/**
-	 * Methode permettant de dessiner les differentes formes.
-	 * @param g
-	 */
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(getBackground());
-		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 	/**
 	 * Retourne le Model du Dessin.

@@ -70,6 +70,7 @@ public class ShapeComponent extends JPanel implements Serializable{
 		g2d.fill(s);
 		g2d.setColor(borderColor);
 		g2d.draw(s);
+		System.out.println("repaint");
 	}
 
 	public Shape getShape() {
