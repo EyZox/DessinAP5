@@ -1,14 +1,10 @@
 package dessin;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.JPanel;
 
-import dessin.layout.DessinLayout;
 /**
  * 
  * @author duponcha,debuer,vasseurn

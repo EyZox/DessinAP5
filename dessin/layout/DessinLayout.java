@@ -5,8 +5,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.Point;
-import java.awt.geom.Rectangle2D;
-
 import dessin.ShapeComponent;
 
 public class DessinLayout implements LayoutManager {

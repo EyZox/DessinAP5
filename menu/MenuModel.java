@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import dessin.DefaultDessinModel;
+
 import main.MainFrame;
 
 /**
@@ -71,15 +73,16 @@ public class MenuModel {
 		boutonOk.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Nouveau dessin non implémenté");
+				MainFrame.getCurrentDessin().clear();
 				fenetre.dispose();
 			}
 		});
 	}
 	
 	public void ouvrir() {
-		new OpenFileMenu();
+		new OptionFileMenu(true);
 	}
+	
 	
 	//Boutons quitter
 	public void quitter() {                
@@ -99,6 +102,7 @@ public class MenuModel {
 	}
 
 	public void save() {
+		new OptionFileMenu(false);
 		MainFrame.getCurrentDessin().save();
 		
 	}
