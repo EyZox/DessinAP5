@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import dessin.DefaultDessinModel;
 
 import main.MainFrame;
 
