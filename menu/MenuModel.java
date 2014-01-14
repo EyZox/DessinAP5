@@ -79,7 +79,7 @@ public class MenuModel {
 	}
 	
 	public void ouvrir() {
-		new OptionFileMenu(true);
+		new OptionFileMenu(OptionFileMenu.OPEN);
 	}
 	
 	
@@ -101,7 +101,7 @@ public class MenuModel {
 	}
 
 	public void save() {
-		new OptionFileMenu(false);
+		new OptionFileMenu(OptionFileMenu.SAVE);
 		MainFrame.getCurrentDessin().save();
 		
 	}

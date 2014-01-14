@@ -12,6 +12,9 @@ import main.MainFrame;
 @SuppressWarnings("serial")
 public class OptionFileMenu extends JFrame {
 
+	public static final boolean OPEN = true;
+	public static final boolean SAVE = false;
+	
 	public OptionFileMenu(final boolean ouvrir) {
 
 		setPreferredSize(new java.awt.Dimension(600,400));
