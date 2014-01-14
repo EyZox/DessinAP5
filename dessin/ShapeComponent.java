@@ -33,8 +33,8 @@ public class ShapeComponent extends JPanel implements Serializable{
 		this.setStrokeSize(strokeSize);
 		this.fillColor = fillColor;
 		this.borderColor = borderColor;
-		SelectHandler moveHandler = new SelectHandler();
-		addMouseListener(moveHandler);
+		addMouseListener(new SelectHandler());
+		addMouseListener(new RemoveHandler());
 	}
 
 	public Point getAnchor() {
