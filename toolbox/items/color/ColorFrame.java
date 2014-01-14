@@ -35,14 +35,14 @@ public class ColorFrame extends JFrame {
 		//Couleur trait :
 		JPanel strokePanel = new JPanel();
 		strokePanel.setLayout(new BoxLayout(strokePanel, BoxLayout.Y_AXIS));
-		opStroke = new JSliderWithLabel("Opacité",0,100);
+		opStroke = new JSliderWithLabel("Opacité",0,255);
 		strokePanel.add(stroke); strokePanel.add(opStroke);
 		strokePanel.setBorder(new TitledBorder("Couleur du trait"));
 		
 		//Couleur de remplissage :
 		JPanel fillPanel = new JPanel();
 		fillPanel.setLayout(new BoxLayout(fillPanel,BoxLayout.Y_AXIS));
-		opFill = new JSliderWithLabel("Opacité",0,100);
+		opFill = new JSliderWithLabel("Opacité",0,255);
 		fillPanel.add(fill); fillPanel.add(opFill);
 		fillPanel.setBorder(new TitledBorder("Couleur de remplissage"));
 		
@@ -75,8 +75,8 @@ public class ColorFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				model.setStrokeColor(stroke.getColor());
-				model.setFillColor(fill.getColor());
+				model.setStrokeColor(new Color(stroke.getColor().getRed(),stroke.getColor().getGreen(),stroke.getColor().getBlue(), opStroke.getSlider().getValue()));
+				model.setFillColor(new Color(fill.getColor().getRed(),fill.getColor().getGreen(),fill.getColor().getBlue(),opFill.getSlider().getValue()));
 				dispose();
 			}
 
