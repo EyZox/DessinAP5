@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
@@ -16,22 +17,38 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import toolbox.ToolboxModel;
+import toolbox.items.JSliderWithLabel;
 
 @SuppressWarnings("serial")
 public class ColorFrame extends JFrame {
 	private JColorChooser stroke,fill;
+	private JSliderWithLabel opStroke, opFill;
 	public ColorFrame(final ToolboxModel model) {
 		super("Selection de couleurs");
 		/*Ecran de la selection de couleur */
 		stroke = new JColorChooser(model.getStrokeColor());
 		stroke.getPreviewPanel().getParent().setVisible(false);
-		stroke.setBorder(new TitledBorder("Couleur du trait"));
 		fill = new JColorChooser(model.getFillColor());
 		fill.getPreviewPanel().getParent().setVisible(false);
-		fill.setBorder(new TitledBorder("Couleur de remplissage"));
 		
-		JPanel colorPanel = new JPanel(new GridLayout(1,0));
-		colorPanel.add(stroke); colorPanel.add(fill);
+		/*Slider Transparence*/
+		//Couleur trait :
+		JPanel strokePanel = new JPanel();
+		strokePanel.setLayout(new BoxLayout(strokePanel, BoxLayout.Y_AXIS));
+		opStroke = new JSliderWithLabel("Opacité",0,100);
+		strokePanel.add(stroke); strokePanel.add(opStroke);
+		strokePanel.setBorder(new TitledBorder("Couleur du trait"));
+		
+		//Couleur de remplissage :
+		JPanel fillPanel = new JPanel();
+		fillPanel.setLayout(new BoxLayout(fillPanel,BoxLayout.Y_AXIS));
+		opFill = new JSliderWithLabel("Opacité",0,100);
+		fillPanel.add(fill); fillPanel.add(opFill);
+		fillPanel.setBorder(new TitledBorder("Couleur de remplissage"));
+		
+		
+		JPanel colorPanel = new JPanel(new GridLayout(1,2));
+		colorPanel.add(strokePanel); colorPanel.add(fillPanel);
 		
 		/*Bouttons*/
 		JButton ok = new JButton("Ok");
@@ -42,7 +59,6 @@ public class ColorFrame extends JFrame {
 		
 		this.getContentPane().add(colorPanel,BorderLayout.CENTER);
 		this.getContentPane().add(buttonPanel,BorderLayout.SOUTH);
-		
 		
 		/* EVENTS */
 		
